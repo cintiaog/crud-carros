@@ -43,17 +43,24 @@ class CarroController extends Controller
      */
     public function store(Request $request)
     {
-        $cad=$this->objCarro->create([
-            'marca'=>$request->marca,
-            'modelo'=>$request->modelo,
-            'ano'=>$request->ano,
-            'km'=>$request->km,
-            'price'=>$request->price
 
-         ]);
-         if($cad){
-             return redirect('carros');
-         }
+        $this->validate($request,[
+            'marca'=>'required',
+            'modelo'=>'required',
+            'ano'=>'required',
+            'km'=>'required',
+            'price'=>'required',
+        ]);
+           
+        $CarroObj = new ModelCarro;
+        $CarroObj->marca = $request->marca;
+        $CarroObj->modelo = $request->modelo;
+        $CarroObj->ano = $request->ano;
+        $CarroObj->km = $request->km;
+        $CarroObj->price = $request->price;
+        $CarroObj->save();
+        return redirect (route('home'))->with('successMeg','Cadastro realizado com sucesso!');
+
     }
 
     /**

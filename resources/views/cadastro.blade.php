@@ -4,7 +4,7 @@
 <h1 class="text-center">Cadastro</h1>
     <hr>
 <div class="container">
-<form name="formCad" id="formCad" method="post" action="{{url('/carros')}}">
+<form name="formCad" id="formCad" method="POST" action="{{route('store')}}">
      @csrf
     
 <input class="form-control" type="text" name="marca" id="marca" placeholder="Marca"  value=""><br>

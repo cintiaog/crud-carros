@@ -4,10 +4,16 @@
     <h1 class="text-center">CRUD</h1>
     <hr>
     <div class="text-center mt-3 mb-4">
-    <a href ="{{url('')}}">
+    <a href ="{{route('create')}}">
             <button class="btn btn-success">Cadastrar</button>
         </a>
     </div>
+    @if (session('successMsg'))
+    <div class="alert alert-success" role="alert">
+      {{session('successMsg')}}
+
+    </div>
+   @endif
     <div class="col-12 m-auto">
     <table class="table">
   <thead class="thead-dark">
@@ -33,7 +39,7 @@
       <td> 
  
 
-      <a href =" ">
+      <a href ="">
             <button class="btn btn-dark">Visualizar</button>
         </a>
         <a href ="">
@@ -47,5 +53,6 @@
   @endforeach
   </tbody>
 </table>
+
 </div>
 @endsection

@@ -29,4 +29,11 @@
     </tr>
   </tbody>
 </table>
+<a href ="{{route('home')}}">
+  <button class="btn btn-primary">Voltar</button>
+</a>
+<a href ="{{route('edit',$carros->id)}}">
+  <button class="btn btn-success">Editar</button>
+</a>
+
 @endsection

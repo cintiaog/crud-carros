@@ -45,8 +45,11 @@
         <a href ="{{route('edit',$carro->id)}}">
             <button class="btn btn-primary">Editar</button>
         </a>
-        <a href ="">
+
+      
+        <a href ="{{route('delete',$carro->id)}}">
             <button class="btn btn-danger">Deletar</button>
+        </button>     
         </a>
       </td>
     </tr>

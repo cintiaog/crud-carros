@@ -68,7 +68,7 @@ class CarroController extends Controller
     public function show($id)
     {
         
-        $carros = $this->objCarro->find($id);
+        $carros = modelCarro::find($id);
         return view ('visualizar',compact('carros'));
 
         
@@ -82,8 +82,8 @@ class CarroController extends Controller
      */
     public function edit($id)
     {
-        $carro = ModelCarro::find($id);
-        return view ('editar', compact('carro'));
+        $carros = ModelCarro::find($id);
+        return view ('editar', compact('carros'));
     }
 
     /**
@@ -95,7 +95,23 @@ class CarroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'marca' => 'required',
+            'modelo' => 'required',
+            'ano' => 'required',
+            'km' => 'required',
+            'price' => 'required',
+        ]);
+           
+        $CarroObj = ModelCarro::find($id);
+        $CarroObj->marca = $request->marca;
+        $CarroObj->modelo = $request->modelo;
+        $CarroObj->ano = $request->ano;
+        $CarroObj->km = $request->km;
+        $CarroObj->price = $request->price;
+        $CarroObj->save();
+        return redirect (route('update',$CarroObj->id))->with('successMsg','Cadastro foi atualizado com sucesso!');
+
     }
 
     /**
@@ -106,6 +122,8 @@ class CarroController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ModelCarro::find($id)->delete();
+        return redirect(route('home'))->with('successMsg','Cadastro Deletado com Sucesso');
+
     }
 }

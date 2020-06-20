@@ -25,5 +25,7 @@ Route::GET('/cadastro', 'CarroController@create')->name('create');
 Route::POST('/carros', 'CarroController@store')->name('store');
 
 
-Route::GET('/Editar/{id}', 'CarroController@edit')->name('edit');
-Route::POST('/carros/{id}', 'CarroController@update')->name('update');
+Route::GET('/editar/{id}', 'CarroController@edit')->name('edit');
+Route::POST('/editar/{id}', 'CarroController@update')->name('update');
+
+Route::DELETE('/deletar{id}', 'CarroController@destroy')->name('delete');

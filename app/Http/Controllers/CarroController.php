@@ -122,8 +122,8 @@ class CarroController extends Controller
      */
     public function destroy($id)
     {
-        ModelCarro::find($id)->delete();
-        return redirect(route('home'))->with('successMsg','Cadastro Deletado com Sucesso');
+        $carros = ModelCarro::find($id)->delete();
+        return redirect(route ('home'))->with('successMsg','Cadastro Deletado com Sucesso');
 
     }
 }

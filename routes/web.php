@@ -28,4 +28,4 @@ Route::POST('/carros', 'CarroController@store')->name('store');
 Route::GET('/editar/{id}', 'CarroController@edit')->name('edit');
 Route::POST('/editar/{id}', 'CarroController@update')->name('update');
 
-Route::DELETE('/deletar{id}', 'CarroController@destroy')->name('delete');
+Route::DELETE('/deletar/{id}', 'CarroController@destroy')->name('delete');

@@ -7,11 +7,7 @@ use App\Models\ModelCarro;
 
 class CarroController extends Controller
 {
-    private $objCarro;
-    public function __Construct()
-    {
-        $this->objCarro = new ModelCarro();
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +15,7 @@ class CarroController extends Controller
      */
     public function index()
     {     
-        $carros = $this->objCarro->all();
+        $carros = ModelCarro::all();
         return view ('index', compact('carros'));
        
     }
@@ -31,7 +27,7 @@ class CarroController extends Controller
      */
     public function create()
     {
-        $carros = $this->objCarro->all();
+        $carros = ModelCarro::all();
         return view ('cadastro',compact('carros'));
     }
 
@@ -45,11 +41,11 @@ class CarroController extends Controller
     {
 
         $this->validate($request,[
-            'marca'=>'required',
-            'modelo'=>'required',
-            'ano'=>'required',
-            'km'=>'required',
-            'price'=>'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'ano' => 'required',
+            'km' => 'required',
+            'price' => 'required',
         ]);
            
         $CarroObj = new ModelCarro;
@@ -59,7 +55,7 @@ class CarroController extends Controller
         $CarroObj->km = $request->km;
         $CarroObj->price = $request->price;
         $CarroObj->save();
-        return redirect (route('home'))->with('successMeg','Cadastro realizado com sucesso!');
+        return redirect (route('home'))->with('successMsg','Cadastro realizado com sucesso!');
 
     }
 
@@ -86,7 +82,8 @@ class CarroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carro = ModelCarro::find($id);
+        return view ('editar', compact('carro'));
     }
 
     /**

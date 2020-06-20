@@ -23,3 +23,7 @@ Route::GET('/carros/{id}','CarroController@show')->name('show');
 
 Route::GET('/cadastro', 'CarroController@create')->name('create');
 Route::POST('/carros', 'CarroController@store')->name('store');
+
+
+Route::GET('/Editar/{id}', 'CarroController@edit')->name('edit');
+Route::POST('/carros/{id}', 'CarroController@update')->name('update');

@@ -4,6 +4,13 @@
 <h1 class="text-center">Cadastro</h1>
     <hr>
 <div class="container">
+    @if ($errors)
+    @foreach ($errors->all as $error)
+    <div class="alert alert-danger" role="alert">
+        {{$error}}
+    </div>
+    @endforeach   
+    @endif
 <form name="formCad" id="formCad" method="POST" action="{{route('store')}}">
      @csrf
     

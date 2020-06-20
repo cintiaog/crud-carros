@@ -39,10 +39,10 @@
       <td> 
  
 
-      <a href ="">
+      <a href ="{{route('show',$carro->id)}}">
             <button class="btn btn-dark">Visualizar</button>
         </a>
-        <a href ="">
+        <a href ="{{route('edit',$carro->id)}}">
             <button class="btn btn-primary">Editar</button>
         </a>
         <a href ="">

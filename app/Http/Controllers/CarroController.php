@@ -46,6 +46,7 @@ class CarroController extends Controller
             'ano' => 'required',
             'km' => 'required',
             'price' => 'required',
+            'image' => 'required'
         ]);
            
         $CarroObj = new ModelCarro;
@@ -54,8 +55,19 @@ class CarroController extends Controller
         $CarroObj->ano = $request->ano;
         $CarroObj->km = $request->km;
         $CarroObj->price = $request->price;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalName();
+            $filename = $extension;
+            $file->move('upload/carros/', $filename);
+            $CarroObj->image = $filename;
+        }else{
+            return $request;
+            $CarroObj->image = '';
+
+        }
         $CarroObj->save();
-        return redirect (route('home'))->with('successMsg','Cadastro realizado com sucesso!');
+        return view(route('store'))->with('successMsg','Cadastro realizado com sucesso!');
 
     }
 
@@ -101,6 +113,8 @@ class CarroController extends Controller
             'ano' => 'required',
             'km' => 'required',
             'price' => 'required',
+            'image' => 'required'
+
         ]);
            
         $CarroObj = ModelCarro::find($id);
@@ -109,6 +123,17 @@ class CarroController extends Controller
         $CarroObj->ano = $request->ano;
         $CarroObj->km = $request->km;
         $CarroObj->price = $request->price;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalName();
+            $filename = $extension;
+            $file->move('upload/carros/', $filename);
+            $CarroObj->image = $filename;
+        }else{
+            return $request;
+            $CarroObj->image = '';
+
+        }
         $CarroObj->save();
         return redirect (route('update',$CarroObj->id))->with('successMsg','Cadastro foi atualizado com sucesso!');
 
@@ -125,5 +150,11 @@ class CarroController extends Controller
         $carros = ModelCarro::find($id)->delete();
         return redirect(route ('home'))->with('successMsg','Cadastro Deletado com Sucesso');
 
+    }
+
+    public function cadastroImagem(Request $request)
+    {
+        return view('imagem');
+    
     }
 }

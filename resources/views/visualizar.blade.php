@@ -27,12 +27,16 @@
     <tr>
       <td>PREÇO: {{$carros->price ?? ''}}</td>
     </tr>
+    <tr>
+      <td>IMAGEM: <img src="\upload\carros\{{$carros->image ?? ''}}"></td>
+    </tr>
+
   </tbody>
 </table>
 <a href ="{{route('home')}}">
   <button class="btn btn-primary">Voltar</button>
 </a>
-<a href ="{{route('edit',$carros->id)}}">
+<a href ="{{route('edit',$carros->id ?? ' ')}}">
   <button class="btn btn-success">Editar</button>
 </a>
 

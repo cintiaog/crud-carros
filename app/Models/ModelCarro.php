@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class ModelCarro extends Model
 {
     protected $table = 'carros';
-    protected $Fillable = ['marca','modelo','ano','km','price']; 
+    protected $Fillable = ['marca','modelo','ano','km','price','image']; 
 }
 

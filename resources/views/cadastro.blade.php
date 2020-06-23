@@ -11,7 +11,7 @@
     </div>
     @endforeach   
     @endif
-<form name="formCad" id="formCad" method="POST" action="{{route('store')}}">
+<form name="formCad" id="formCad" method="POST" action="{{route('store')}}" enctype="multipart/form-data">
      @csrf
     
 <input class="form-control" type="text" name="marca" id="marca" placeholder="Marca"  value=""><br>
@@ -19,10 +19,9 @@
 <input class="form-control" type="text" name="ano" id="ano" placeholder="Ano:" value=""><br>
     <input class="form-control" type="text" name="km" id="km" placeholder="KM:" value=""><br>
     <input class="form-control" type="text" name="price" id="price" placeholder="Preço:"  value=""><br>
-    
+    <input type="file" class="form-control-file" id="enviarImagem" name="image">
     <input class="btn btn-primary" type="submit" value="Cadastrar">
 </form>
-    
 </div>
 
 @endsection

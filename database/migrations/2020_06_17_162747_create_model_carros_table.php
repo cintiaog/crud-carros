@@ -20,6 +20,7 @@ class CreateModelCarrosTable extends Migration
             $table->integer('ano');
             $table->integer('km');
             $table->double('price',10,2);
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
     }
